@@ -54,6 +54,9 @@
     .circle-grid.reveal .team-card:nth-child(5){ animation-delay:7.2s }
     .circle-grid.reveal .team-card:nth-child(6){ animation-delay:9s }
     @media (prefers-reduced-motion: reduce){ .circle-grid.reveal .team-card{ animation:none; opacity:1; transform:none } }
+  .music-card{background:#fff;padding:1rem 1.2rem;border-radius:1rem;border:1px solid #0002;display:flex;align-items:center;gap:1rem}
+    .music-card .meta{line-height:1.3}
+    .music-card audio{width:100%}
   </style>
 </head>
 <body><header>
@@ -84,10 +87,28 @@
     <div><img src="https://cdn-icons-png.flaticon.com/512/826/826900.png"><p>கதைகள்</p></div>
     <div><img src="https://cdn-icons-png.flaticon.com/512/201/201623.png"><p>பாடல்கள்</p></div>
     <div><img src="https://cdn-icons-png.flaticon.com/512/3176/3176293.png"><p>செயல்பாடுகள்</p></div>
-  </div>  <!-- Middle Description Banner -->  <div class="banner">✨ தினமும் புதிய கதைகள், பாடல்கள் & சிரிப்பு! ✨</div>  <!-- Recent Uploads Section -->  <h2>Recent Uploads</h2>
+  </div>  <!-- Middle Description Banner -->  <div class="banner" style="overflow:hidden; white-space:nowrap; position:relative;">
+  <span style="display:inline-block; padding-left:100%; animation:scrollText 12s linear infinite;">✨ தினமும் புதிய கதைகள், பாடல்கள் & சிரிப்பு! ✨</span>
+</div>
+<style>
+@keyframes scrollText {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+</style>  <!-- Recent Uploads Section -->  <h2>Recent Uploads</h2>
   <div class="card">
     <iframe width="100%" height="300" src="https://www.youtube.com/embed?listType=playlist&list=UUCch__Vn91S_Fub05SXh4rQ" frameborder="0" allowfullscreen></iframe>
-  </div>  <!-- About Us Section -->  <h2 style="margin-top:2rem">About Us</h2>
+  </div>  <!-- Soft Kids Music (royalty‑free placeholder) -->  <h2 style="margin-top:2rem">Soft Kids Music</h2>
+  <div class="music-card">
+    <audio controls preload="metadata" loop src="music/soft-kids.mp3">
+      Your browser does not support the audio element.
+    </audio>
+    <div class="meta">
+      <strong>Calm & gentle background music</strong><br>
+      Tip: upload your MP3 to <code>music/soft-kids.mp3</code> in this repo.
+    </div>
+  </div>
+  <!-- End music section -->  <!-- About Us Section -->  <h2 style="margin-top:2rem">About Us</h2>
   <div class="circle-grid reveal">
     <div class="team-card">
       <span class="badge">Creator</span>
