@@ -70,7 +70,7 @@
   <p>
     Colourful, heartwarming stories teaching honesty, kindness, courage & Tamil cultural values.<br><br>
     ✨ குட்டிமா டிவிக்கு வரவேற்கிறோம்! ✨<br>
-    குழந்தைகளுக்காக அன்போடு சொல்லப்படும் நல்லெண்ணக் கதைகள், பாடல்கள்&சிரிப்பு தரும் பாட்டுக்கள்.
+    குழந்தைகளுக்காக அன்போடு சொல்லப்படும் நல்லெண்ணக் கதைகள், பாடல்கள் & சிரிப்பு தரும் பாட்டுக்கள்.
   </p>
 </div>
 
@@ -98,21 +98,31 @@
 </style>  <!-- Recent Uploads Section -->  <h2>Recent Uploads</h2>
   <div class="card">
     <iframe width="100%" height="300" src="https://www.youtube.com/embed?listType=playlist&list=UUCch__Vn91S_Fub05SXh4rQ" frameborder="0" allowfullscreen></iframe>
-  </div>  <!-- Soft Kids Music (royalty‑free placeholder) -->  <h2 style="margin-top:2rem">Soft Kids Music</h2>
-  <div class="music-card">
-    <audio id="bgm" src="soft-kids.mp3" autoplay loop controls style="width:100%;"></audio>
-<script>
-const audio = document.getElementById('bgm');
-audio.volume = 0.4;
-audio.play().catch(() => {
-  document.body.addEventListener('touchstart', () => audio.play(), { once:true });
-});
-</script>
-    <div class="meta">
-      <strong>Calm & gentle background music</strong><br>
-      Tip: upload your MP3 to <code>music/soft-kids.mp3</code> in this repo.
+  </div>  <!-- Soft Kids Music (autoplay + single pause/play button) -->  <div id="bgmSection" style="margin-top:2rem">
+    <audio id="bgm" src="soft-kids.mp3" autoplay loop style="display:none"></audio>
+    <div style="display:flex;justify-content:center">
+      <button id="bgmToggle" class="btn" style="margin:0">⏸ Pause music</button>
     </div>
   </div>
+  <script>
+    (function(){
+      const audio = document.getElementById('bgm');
+      const btn = document.getElementById('bgmToggle');
+      function setLabel(){ btn.textContent = audio.paused ? '▶ Play music' : '⏸ Pause music'; }
+      audio.volume = 0.4;
+      audio.play().catch(() => {
+        // Mobile autoplay fallback: start once user taps anywhere
+        const resume = () => { audio.play().catch(()=>{}); setLabel(); document.removeEventListener('touchstart', resume); document.removeEventListener('click', resume); };
+        document.addEventListener('touchstart', resume, { once:true });
+        document.addEventListener('click', resume, { once:true });
+      });
+      btn.addEventListener('click', () => { if(audio.paused) audio.play(); else audio.pause(); setLabel(); });
+      // Keep label in sync
+      audio.addEventListener('play', setLabel);
+      audio.addEventListener('pause', setLabel);
+      setLabel();
+    })();
+  </script>
   <!-- End music section -->  <!-- About Us Section -->  <h2 style="margin-top:2rem">About Us</h2>
   <div class="circle-grid reveal">
     <div class="team-card">
