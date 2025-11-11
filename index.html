@@ -99,29 +99,28 @@
   <div class="card">
     <iframe width="100%" height="300" src="https://www.youtube.com/embed?listType=playlist&list=UUCch__Vn91S_Fub05SXh4rQ" frameborder="0" allowfullscreen></iframe>
   </div>  <!-- Soft Kids Music (autoplay + single pause/play button) -->  <div id="bgmSection" style="margin-top:2rem">
-    <audio id="bgm" src="soft-kids.mp3" autoplay loop style="display:none"></audio>
+    <!-- Soft Kids Music (manual play/pause only, no autoplay) -->
+  <div id="bgmSection" style="margin-top:2rem">
+    <audio id="bgm" src="soft-kids.mp3" loop style="display:none"></audio>
     <div style="display:flex;justify-content:center">
-      <button id="bgmToggle" class="btn" style="margin:0">⏸ Pause music</button>
+      <button id="bgmToggle" class="btn" style="margin:0">▶ Play music</button>
     </div>
   </div>
   <script>
-    (function(){
-      const audio = document.getElementById('bgm');
-      const btn = document.getElementById('bgmToggle');
-      function setLabel(){ btn.textContent = audio.paused ? '▶ Play music' : '⏸ Pause music'; }
-      audio.volume = 0.4;
-      audio.play().catch(() => {
-        // Mobile autoplay fallback: start once user taps anywhere
-        const resume = () => { audio.play().catch(()=>{}); setLabel(); document.removeEventListener('touchstart', resume); document.removeEventListener('click', resume); };
-        document.addEventListener('touchstart', resume, { once:true });
-        document.addEventListener('click', resume, { once:true });
-      });
-      btn.addEventListener('click', () => { if(audio.paused) audio.play(); else audio.pause(); setLabel(); });
-      // Keep label in sync
-      audio.addEventListener('play', setLabel);
-      audio.addEventListener('pause', setLabel);
-      setLabel();
-    })();
+    const audio = document.getElementById('bgm');
+    const btn = document.getElementById('bgmToggle');function updateLabel(){
+  btn.textContent = audio.paused ? '▶ Play music' : '⏸ Pause music';
+}
+
+btn.addEventListener('click', () => {
+  if(audio.paused){ audio.play(); }
+  else{ audio.pause(); }
+  updateLabel();
+});
+
+audio.volume = 0.4;
+updateLabel();
+
   </script>
   <!-- End music section -->  <!-- About Us Section -->  <h2 style="margin-top:2rem">About Us</h2>
   <div class="circle-grid reveal">
