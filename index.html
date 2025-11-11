@@ -101,24 +101,39 @@
   </div>  <!-- Soft Kids Music (autoplay + single pause/play button) -->  <div id="bgmSection" style="margin-top:2rem">
     <!-- Soft Kids Music (manual play/pause only, no autoplay) -->
   <div id="bgmSection" style="margin-top:2rem">
-    <audio id="bgm" src="soft-kids.mp3" loop style="display:none"></audio>
+    <!-- Soft Kids Music (autoplay with pause option) -->
+  <div id="bgmSection" style="margin-top:2rem">
+    <audio id="bgm" src="soft-kids.mp3" autoplay loop style="display:none"></audio>
     <div style="display:flex;justify-content:center">
-      <button id="bgmToggle" class="btn" style="margin:0">▶ Play music</button>
+      <button id="bgmToggle" class="btn" style="margin:0">⏸ Pause music</button>
     </div>
   </div>
   <script>
     const audio = document.getElementById('bgm');
-    const btn = document.getElementById('bgmToggle');function updateLabel(){
+    const btn = document.getElementById('bgmToggle');audio.volume = 0.4;
+
+function updateLabel(){
   btn.textContent = audio.paused ? '▶ Play music' : '⏸ Pause music';
 }
 
+// Try autoplay immediately
+audio.play().catch(() => {
+  // If blocked, start when user interacts anywhere
+  const startAudio = () => {
+    audio.play().catch(()=>{});
+    updateLabel();
+    document.removeEventListener('click', startAudio);
+    document.removeEventListener('touchstart', startAudio);
+  };
+  document.addEventListener('click', startAudio, { once:true });
+  document.addEventListener('touchstart', startAudio, { once:true });
+});
+
 btn.addEventListener('click', () => {
-  if(audio.paused){ audio.play(); }
-  else{ audio.pause(); }
+  if(audio.paused) audio.play(); else audio.pause();
   updateLabel();
 });
 
-audio.volume = 0.4;
 updateLabel();
 
   </script>
