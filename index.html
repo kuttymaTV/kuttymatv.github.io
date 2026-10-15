@@ -1,169 +1,67 @@
-<!DOCTYPE html><html lang="ta">
+<!doctype html>
+<html lang="ta">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>குட்டிமா TV</title>
-  <style>
-    body { margin:0; font-family:Inter,Arial; background:#b3e5fc; color:#000; }
-    header { padding:1rem; background:#ffffffaa; backdrop-filter:blur(6px); position:sticky; top:0; }
-    .container { width:min(1100px,92%); margin:auto; }
-    .grid { display:grid; gap:1rem; }
-    .cols-2 { grid-template-columns:repeat(2,1fr); }
-    @media(max-width:800px){ .cols-2 { grid-template-columns:1fr; } }
-    .card { background:#fff; padding:1.2rem; border-radius:1rem; border:1px solid #0002; }
-    .btn { background:#ffcc00; padding:.9rem 1.8rem; border-radius:1rem; font-weight:bold; display:inline-block; margin:1.5rem auto; text-align:center; }
-    .icon-row { display:flex; justify-content:center; gap:2rem; margin:2rem 0; }
-    .icon-row div { text-align:center; }
-    .icon-row img { height:70px; }
-    .banner { background:linear-gradient(90deg,#ffafbd,#ffc3a0); padding:1.5rem; border-radius:1rem; margin:2rem 0; text-align:center; font-weight:bold; }
-    .video-thumb { width:100%; border-radius:1rem; }
-    .circle-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.5rem; width:250px; margin:auto; text-align:center; }
-    .circle-grid div { background:transparent; padding:0; border-radius:0; border:0; }
-  .circle-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; width:100%; margin:auto; text-align:center; }
-    .team-card { background:#fff; padding:1.2rem; border-radius:1.2rem; border:1px solid #0002; transition:transform .25s ease, box-shadow .25s ease; box-shadow:0 6px 18px #0001; position:relative; overflow:hidden; opacity:0; transform:translateY(12px); animation:fadeUp 1.2s ease forwards; }
-    .team-card:hover { transform:translateY(-6px) scale(1.05); box-shadow:0 16px 36px rgba(0,0,0,.25); }
-    .team-card img {
-  width:70%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  object-position: top center;
-  border-radius:50%;
-  border:0;
-  margin:12px auto;
-  display:block;
-  box-shadow:0 6px 16px rgba(0,0,0,.12);
-}
-    .badge { position:absolute; right:10px; top:10px; background:#ffcc00; color:#000; font-weight:700; padding:.25rem .6rem; border-radius:.7rem; font-size:.75rem; box-shadow:0 2px 6px #0002 }
-  /* Staggered reveal up to ~10s */
-    @keyframes fadeUp { from{ opacity:0; transform:translateY(12px) } to{ opacity:1; transform:translateY(0) } }
-    .circle-grid .team-card:nth-child(1){ animation-delay:0s }
-    .circle-grid .team-card:nth-child(2){ animation-delay:1.7s }
-    .circle-grid .team-card:nth-child(3){ animation-delay:3.4s }
-    .circle-grid .team-card:nth-child(4){ animation-delay:5.1s }
-    .circle-grid .team-card:nth-child(5){ animation-delay:6.8s }
-    .circle-grid .team-card:nth-child(6){ animation-delay:8.5s }
-  /* --- Team stagger animation (up to ~10s) --- */
-    .team-card { background:#fff; padding:1.2rem; border-radius:1.2rem; border:1px solid #0002; transition:transform .25s ease, box-shadow .25s ease; box-shadow:0 6px 18px #0001; position:relative; overflow:hidden; opacity:0; transform:translateY(12px); }
-    @keyframes fadeUp { from{ opacity:0; transform:translateY(12px) } to{ opacity:1; transform:translateY(0) } }
-    /* Start only after page ready by toggling .reveal on the grid */
-    .circle-grid.reveal .team-card{ animation: fadeUp .8s ease forwards; will-change: transform, opacity; }
-    .circle-grid.reveal .team-card:nth-child(1){ animation-delay:0s }
-    .circle-grid.reveal .team-card:nth-child(2){ animation-delay:1.8s }
-    .circle-grid.reveal .team-card:nth-child(3){ animation-delay:3.6s }
-    .circle-grid.reveal .team-card:nth-child(4){ animation-delay:5.4s }
-    .circle-grid.reveal .team-card:nth-child(5){ animation-delay:7.2s }
-    .circle-grid.reveal .team-card:nth-child(6){ animation-delay:9s }
-    @media (prefers-reduced-motion: reduce){ .circle-grid.reveal .team-card{ animation:none; opacity:1; transform:none } }
-  .music-card{background:#fff;padding:1rem 1.2rem;border-radius:1rem;border:1px solid #0002;display:flex;align-items:center;gap:1rem}
-    .music-card .meta{line-height:1.3}
-    .music-card audio{width:100%}
-  </style>
-</head>
-<body><header>
-  <div class="container" style="display:flex;align-items:center;gap:.8rem">
-    <img src="logo.png" style="height:44px;border-radius:8px" alt="KuttymaTV logo">
-    <span style="font-weight:900;font-size:2.2rem">குட்டிமா டிவி</span>
-  </div>
-</header><div class="container">  <!-- Top Two Column Section -->  <div class="grid cols-2" style="margin-top:2rem"><!-- Left Description Box -->
-<div class="card" style="min-height:280px">
-  <h2>Welcome to Kuttyma TV</h2>
-  <p>
-    Colourful, heartwarming stories teaching honesty, kindness, courage & Tamil cultural values.<br><br>
-    ✨ குட்டிமா டிவிக்கு வரவேற்கிறோம்! ✨<br>
-    குழந்தைகளுக்காக அன்போடு சொல்லப்படும் நல்லெண்ணக் கதைகள், பாடல்கள் & சிரிப்பு தரும் பாட்டுக்கள்.
-  </p>
-</div>
-
-<!-- Right Side Video Placeholder -->
-<div class="card" style="min-height:280px; text-align:center">
-  <h3>Hero Video</h3>
-  <!-- Change only the VIDEO_ID below to swap the hero video -->
-  <iframe width="100%" height="220" src="https://www.youtube.com/embed/tChp8wPswHY" frameborder="0" allowfullscreen></iframe>
-</div>
-
-  </div>  <!-- Subscribe Button -->  <div style="text-align:center">
-    <a class="btn" href="https://youtube.com/@KuttymaTV?sub_confirmation=1">✅ Subscribe Now</a>
-  </div>  <!-- Icons Row -->  <div class="icon-row">
-    <div><img src="https://cdn-icons-png.flaticon.com/512/826/826900.png"><p>கதைகள்</p></div>
-    <div><img src="https://cdn-icons-png.flaticon.com/512/201/201623.png"><p>பாடல்கள்</p></div>
-    <div><img src="https://cdn-icons-png.flaticon.com/512/3176/3176293.png"><p>செயல்பாடுகள்</p></div>
-  </div>  <!-- Middle Description Banner -->  <div class="banner" style="overflow:hidden; white-space:nowrap; position:relative;">
-  <span style="display:inline-block; padding-left:100%; animation:scrollText 12s linear infinite;">✨ தினமும் புதிய கதைகள், பாடல்கள் & சிரிப்பு! ✨</span>
-</div>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff8f2">
+<meta name="description" content="KuttymaTV – தமிழ் குழந்தைகளுக்கான அழகான நீதிக்கதைகள், பாடல்கள் மற்றும் மகிழ்ச்சியான கற்றல்.">
+<title>குட்டிமா TV | தமிழ் கதைகள் & பாடல்கள்</title>
 <style>
-@keyframes scrollText {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
-}
-</style>  <!-- Recent Uploads Section -->  <h2>Recent Uploads</h2>
-  <div class="card">
-    <iframe width="100%" height="300" src="https://www.youtube.com/embed?listType=playlist&list=UUCch__Vn91S_Fub05SXh4rQ" frameborder="0" allowfullscreen></iframe>
-  </div>  <!-- Soft Kids Music (autoplay + single pause/play button) -->  <div id="bgmSection" style="margin-top:2rem">
-    <!-- Soft Kids Music (manual play/pause only, no autoplay) -->
-  <div id="bgmSection" style="margin-top:2rem">
-    <!-- Soft Kids Music (autoplay with pause option) -->
-  <div id="bgmSection" style="margin-top:2rem">
-    <audio id="bgm" src="soft-kids.mp3" autoplay loop style="display:none"></audio>
-    <div style="display:flex;justify-content:center">
-      <button id="bgmToggle" class="btn" style="margin:0">⏸ Pause music</button>
-    </div>
-  </div>
-  <script>
-    const audio = document.getElementById('bgm');
-    const btn = document.getElementById('bgmToggle');audio.volume = 0.4;
-
-function updateLabel(){
-  btn.textContent = audio.paused ? '▶ Play music' : '⏸ Pause music';
-}
-
-// Try autoplay immediately
-audio.play().catch(() => {
-  // If blocked, start when user interacts anywhere
-  const startAudio = () => {
-    audio.play().catch(()=>{});
-    updateLabel();
-    document.removeEventListener('click', startAudio);
-    document.removeEventListener('touchstart', startAudio);
-  };
-  document.addEventListener('click', startAudio, { once:true });
-  document.addEventListener('touchstart', startAudio, { once:true });
-});
-
-btn.addEventListener('click', () => {
-  if(audio.paused) audio.play(); else audio.pause();
-  updateLabel();
-});
-
-updateLabel();
-
-  </script>
-  <!-- End music section -->  <!-- About Us Section -->  <h2 style="margin-top:2rem">About Us</h2>
-  <div class="circle-grid reveal">
-    <div class="team-card">
-      <span class="badge">Creator</span>
-      <img src="creator1.png" alt="Jebakumar">
-      <br><strong>Jimrish Jebakumar</strong><br>Content Creator
-    </div>
-    <div class="team-card">
-      <span class="badge">CEO</span>
-      <img src="creator2.png" alt="Jebita">
-      <br><strong>Jebita</strong><br>CEO
-    </div>
-    <div class="team-card">
-      <span class="badge">Kid</span>
-      <img src="creator3.png" alt="Jerwin">
-      <br><strong>Jerwin</strong><br>Kid
-    </div>
-  </div>
-<footer style="text-align:center;padding:1.5rem 0;color:#000;font-size:.9rem;opacity:.8">
-    © 2025 Kuttyma TV — Original kids stories, songs & learning content. All rights reserved.
-  </footer>
+:root{--ink:#30243b;--muted:#716579;--pink:#ff6f91;--purple:#7554c8;--yellow:#ffd166;--cream:#fff8f2;--line:#f0e5ed;--shadow:0 14px 38px #50305c12}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans Tamil",Arial,sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.wrap{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#fffaf5ef;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{display:flex;align-items:center;gap:.75rem;font-weight:900;font-size:1.2rem}.brand img{width:48px;height:48px;object-fit:cover;border-radius:14px}.brand small{display:block;color:var(--muted);font-size:.7rem;font-weight:700;letter-spacing:.04em}.navlinks{display:flex;align-items:center;gap:1.25rem;font-size:.92rem;font-weight:700}.navlinks a:hover{color:var(--purple)}.pill{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;background:var(--purple);color:white;padding:.85rem 1.2rem;border-radius:999px;font-weight:800;box-shadow:0 7px 18px #7554c833}.pill:hover{transform:translateY(-2px)}.pill.yellow{background:var(--yellow);color:var(--ink);box-shadow:none}
+.hero{padding:4.5rem 0 3.2rem;background:radial-gradient(ellipse at 8% 10%,#ffe1e9 0,transparent 38%),radial-gradient(ellipse at 92% 0,#e7ddff 0,transparent 34%)}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}.eyebrow{display:inline-flex;gap:.5rem;align-items:center;background:white;border:1px solid var(--line);padding:.4rem .8rem;border-radius:999px;font-size:.85rem;font-weight:800;color:var(--purple)}h1{font-size:clamp(2.3rem,5vw,4.4rem);line-height:1.17;letter-spacing:-.04em;margin:1rem 0}h1 em{font-style:normal;color:var(--pink)}.lead{font-size:1.08rem;color:var(--muted);max-width:570px}.hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin:1.5rem 0}.micro{font-size:.86rem;color:var(--muted)}.feature-video{padding:.75rem;background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);transform:rotate(1deg)}.video-frame{aspect-ratio:16/9;width:100%;border:0;border-radius:19px;display:block}.video-caption{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem .4rem .25rem}.video-caption strong{font-size:.95rem}.video-caption span{color:var(--muted);font-size:.8rem}
+.section{padding:4rem 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}.kicker{text-transform:uppercase;letter-spacing:.13em;color:var(--pink);font-size:.75rem;font-weight:900}.section h2{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.25;margin:.35rem 0}.sub{color:var(--muted);margin:.4rem 0 0}.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}.story{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 8px 24px #50305c08;transition:transform .2s,box-shadow .2s}.story:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.story-art{aspect-ratio:16/9;display:grid;place-items:center;font-size:3rem;position:relative;overflow:hidden}.story-art:after{content:"";position:absolute;width:170px;height:170px;border:1px solid #ffffff70;border-radius:50%;right:-45px;bottom:-90px}.art-one{background:linear-gradient(135deg,#ffe4a8,#ffb5bd)}.art-two{background:linear-gradient(135deg,#c9f0d4,#8bd5c4)}.art-three{background:linear-gradient(135deg,#d9d0ff,#a6b8ff)}.story-body{padding:1.1rem}.tag{font-size:.75rem;font-weight:800;color:var(--purple);background:#f0eaff;border-radius:999px;padding:.25rem .6rem;display:inline-block}.story h3{font-size:1.1rem;line-height:1.45;margin:.65rem 0}.story p{font-size:.9rem;color:var(--muted);margin:0 0 1rem}.watch{font-weight:850;color:var(--purple);font-size:.9rem}.watch:hover{text-decoration:underline}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.category{padding:1.25rem;border-radius:20px;background:white;border:1px solid var(--line);display:flex;align-items:center;gap:1rem}.category .emoji{font-size:2rem;background:var(--cream);width:58px;height:58px;border-radius:17px;display:grid;place-items:center;flex-shrink:0}.category strong{display:block}.category span:last-child{font-size:.85rem;color:var(--muted)}
+.channel{background:linear-gradient(120deg,#7554c8,#9a75df);border-radius:28px;padding:2.4rem;color:white;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem}.channel h2{margin:0 0 .5rem}.channel p{margin:0;color:#f0eaff;max-width:650px}.channel .pill{background:var(--yellow);color:var(--ink);box-shadow:none;white-space:nowrap}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}.person{background:#fff;border:1px solid var(--line);border-radius:22px;padding:1.4rem;text-align:center}.person img{width:112px;height:112px;object-fit:cover;object-position:top;border-radius:50%;margin:0 auto 1rem;border:5px solid #fff0f5;box-shadow:0 5px 18px #50305c14}.person strong{display:block}.person span{color:var(--muted);font-size:.88rem}
+.music{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.2rem;background:#fff;border:1px solid var(--line);border-radius:18px}.music p{margin:0}.music small{color:var(--muted)}.music button{border:0;border-radius:999px;background:#f0eaff;color:var(--purple);padding:.7rem 1rem;font-weight:800;cursor:pointer}
+footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}.foot{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}.foot a{font-weight:800;color:var(--purple)}
+@media(max-width:800px){.navlinks a:not(.pill){display:none}.hero{padding:3rem 0 2rem}.hero-grid{grid-template-columns:1fr;gap:1.5rem}.feature-video{transform:none}.story-grid{grid-template-columns:1fr 1fr}.categories{grid-template-columns:1fr}.channel{grid-template-columns:1fr;padding:1.7rem}.channel .pill{justify-self:start}.section{padding:3rem 0}}
+@media(max-width:520px){.story-grid,.about-grid{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.brand{font-size:1rem}.brand img{width:42px;height:42px}.hero-actions .pill{width:100%}.video-caption{align-items:start;flex-direction:column;gap:.1rem}.music{align-items:start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#home"><img src="logo.png" alt="KuttymaTV logo"><span>குட்டிமா TV<small>தமிழ் கதைகள் • பாடல்கள் • மகிழ்ச்சி</small></span></a>
+<nav class="navlinks" aria-label="Main navigation"><a href="#stories">கதைகள்</a><a href="#about">எங்களைப் பற்றி</a><a href="#music">இசை</a><a class="pill" href="https://youtube.com/@KuttymaTV?sub_confirmation=1" target="_blank" rel="noopener">▶ Subscribe</a></nav>
+</div></header>
+<main id="home">
+<section class="hero"><div class="wrap hero-grid">
+<div><span class="eyebrow">✨ குட்டீஸ்களுக்கான கற்பனை உலகம்</span><h1>சின்னச் சின்னக் கதைகள்,<br><em>பெரிய நல்ல பாடங்கள்!</em></h1>
+<p class="lead">அன்பு, நட்பு, நேர்மை, தைரியம் ஆகியவற்றை இனிமையான தமிழ் நீதிக்கதைகள் மற்றும் பாடல்கள் வழியாகக் கற்றுக்கொள்வோம்.</p>
+<div class="hero-actions"><a class="pill" href="#stories">📚 கதைகளைப் பாருங்கள்</a><a class="pill yellow" href="https://youtube.com/@KuttymaTV?sub_confirmation=1" target="_blank" rel="noopener">❤️ சேனலை Subscribe செய்யுங்கள்</a></div>
+<p class="micro">குழந்தைகளும் குடும்பத்தினரும் ஒன்றாக ரசிக்க உருவாக்கப்பட்டது.</p></div>
+<div class="feature-video"><iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/tChp8wPswHY" title="KuttymaTV featured Tamil stories video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div class="video-caption"><strong>🌟 இன்றைய சிறப்புக் காணொளி</strong><span>Watch on YouTube</span></div></div>
+</div></section>
+<section class="section" id="stories"><div class="wrap">
+<div class="section-head"><div><div class="kicker">Watch & learn</div><h2>உங்கள் அடுத்த கதை இங்கே!</h2><p class="sub">கதையைத் தேர்ந்தெடுத்து YouTube-ல் பாருங்கள்.</p></div><a class="watch" href="https://www.youtube.com/playlist?list=UUCch__Vn91S_Fub05SXh4rQ" target="_blank" rel="noopener">அனைத்து வீடியோக்களும் ↗</a></div>
+<div class="story-grid">
+<a class="story" href="https://www.youtube.com/watch?v=tChp8wPswHY" target="_blank" rel="noopener"><div class="story-art art-one" aria-hidden="true">🦊✨</div><div class="story-body"><span class="tag">நீதிக்கதை</span><h3>அற்புதமான தமிழ் நீதிக்கதைகள்</h3><p>மகிழ்ச்சியுடன் நல்ல பழக்கங்களையும் கற்றுக்கொள்ளுங்கள்.</p><span class="watch">▶ கதையைப் பாருங்கள் ↗</span></div></a>
+<a class="story" href="https://www.youtube.com/playlist?list=UUCch__Vn91S_Fub05SXh4rQ" target="_blank" rel="noopener"><div class="story-art art-two" aria-hidden="true">🐰🥕</div><div class="story-body"><span class="tag">குழந்தைகள் கதை</span><h3>விலங்குகளின் சுவையான கதைகள்</h3><p>நட்பு, புத்திசாலித்தனம், பகிர்ந்து வாழ்தல் பற்றிய கதைகள்.</p><span class="watch">▶ கதைகளைப் பாருங்கள் ↗</span></div></a>
+<a class="story" href="https://www.youtube.com/playlist?list=UUCch__Vn91S_Fub05SXh4rQ" target="_blank" rel="noopener"><div class="story-art art-three" aria-hidden="true">🎵🌈</div><div class="story-body"><span class="tag">பாடல்கள் & பொழுதுபோக்கு</span><h3>பாடுவோம், சிரிப்போம், கற்போம்!</h3><p>குட்டீஸ்களின் கற்பனைக்கு வண்ணம் சேர்க்கும் காணொளிகள்.</p><span class="watch">▶ மேலும் பாருங்கள் ↗</span></div></a>
+</div></div></section>
+<section class="section" style="padding-top:0"><div class="wrap"><div class="categories">
+<div class="category"><div class="emoji">📖</div><div><strong>நீதிக்கதைகள்</strong><span>நல்லெண்ணம் தரும் கதைகள்</span></div></div>
+<div class="category"><div class="emoji">🎶</div><div><strong>குழந்தைப் பாடல்கள்</strong><span>இசையோடு மகிழ்ச்சியான நேரம்</span></div></div>
+<div class="category"><div class="emoji">🌱</div><div><strong>கற்றலும் வளர்ச்சியும்</strong><span>சின்ன வயதில் நல்ல பழக்கங்கள்</span></div></div>
+</div></div></section>
+<section class="section" style="padding-top:0"><div class="wrap"><div class="channel"><div><h2>💜 குட்டிமா TV குடும்பத்தில் சேருங்கள்!</h2><p>புதிய தமிழ் கதைகள் மற்றும் பாடல்களைத் தவறவிடாமல் இருக்க எங்கள் YouTube சேனலை Subscribe செய்யுங்கள்.</p></div><a class="pill" href="https://youtube.com/@KuttymaTV?sub_confirmation=1" target="_blank" rel="noopener">Subscribe செய்யுங்கள் ↗</a></div></div></section>
+<section class="section" id="about"><div class="wrap"><div class="section-head"><div><div class="kicker">Our little team</div><h2>குட்டிமா TV பற்றி</h2><p class="sub">குழந்தைகளுக்கான கதைகளை அன்புடன் உருவாக்கும் எங்கள் குழு.</p></div></div>
+<div class="about-grid">
+<div class="person"><img src="creator1.png" alt="Jimrish Jebakumar" loading="lazy"><strong>Jimrish Jebakumar</strong><span>Content Creator</span></div>
+<div class="person"><img src="creator2.png" alt="Jebita" loading="lazy"><strong>Jebita</strong><span>CEO</span></div>
+<div class="person"><img src="creator3.png" alt="Jerwin" loading="lazy"><strong>Jerwin</strong><span>Our little star</span></div>
+</div></div></section>
+<section class="section" id="music" style="padding-top:0"><div class="wrap"><div class="music"><div><p><strong>🎵 மென்மையான பின்னணி இசை</strong></p><small>இசை தானாக இயங்காது — நீங்கள் விரும்பினால் மட்டும் இயக்கலாம்.</small></div><button id="musicToggle" type="button">▶ இசையை இயக்கவும்</button><audio id="bgm" src="soft-kids.mp3" loop preload="none"></audio></div></div></section>
+</main>
+<footer><div class="wrap foot"><span>© 2026 Kuttyma TV · தமிழ் கதைகள், பாடல்கள் & கற்றல்</span><a href="https://youtube.com/@KuttymaTV" target="_blank" rel="noopener">YouTube சேனலைப் பாருங்கள் ↗</a></div></footer>
 <script>
-  // Ensure animations start after DOM is ready (fallback for some mobile browsers)
-  document.addEventListener('DOMContentLoaded', function(){
-    var grid = document.querySelector('.circle-grid');
-    if(grid) grid.classList.add('reveal');
-  });
+const audio=document.getElementById('bgm');const toggle=document.getElementById('musicToggle');audio.volume=.35;
+function label(){toggle.textContent=audio.paused?'▶ இசையை இயக்கவும்':'⏸ இசையை நிறுத்தவும்'}
+toggle.addEventListener('click',async()=>{if(audio.paused){try{await audio.play()}catch(e){toggle.textContent='இசையை இயக்க மீண்டும் முயற்சிக்கவும்'}}else{audio.pause()}label()});
+audio.addEventListener('play',label);audio.addEventListener('pause',label);
 </script>
 </body>
 </html>
